@@ -1,0 +1,211 @@
+/* CSS Variables for theming */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #2c3e50;
+    --button-bg: #f5f6fa;
+    --button-text: #2c3e50;
+    --primary-color: #4a90e2;
+    --primary-hover: #357abd;
+    --dot-bg: #ddd;
+    --border-color: #ccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --button-bg: #2d2d2d;
+    --button-text: #e0e0e0;
+    --primary-color: #3a7abd;
+    --primary-hover: #2d6ca9;
+    --dot-bg: #404040;
+    --border-color: #404040;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.timer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-toggle-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+.timer h2 {
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.timer select {
+    width: 150px;
+    padding: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.display {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: bold;
+    margin: 20px 0;
+    font-family: 'Roboto Mono', monospace;
+    text-shadow: var(--shadow-color);
+    color: var(--text-color);
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.controls button {
+    padding: 12px 30px;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    border-radius: 25px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background: var(--primary-hover);
+}
+
+.time-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.time-options button {
+    padding: 10px 20px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.time-options button.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pomodoro-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pomodoro-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 8px 0;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dot-bg);
+}
+
+.dot.completed {
+    background: var(--primary-color);
+}
+
+.auto-start-toggle {
+    margin: 20px 0;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    color: var(--text-color);
+}
+
+.auto-start-toggle label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.auto-start-toggle input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-color);
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    .timer {
+        padding: 15px;
+    }
+
+    .theme-toggle {
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .time-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .time-options button {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls button {
+        width: 100%;
+        max-width: 200px;
+    }
+} 

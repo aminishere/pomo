@@ -1,0 +1,58 @@
+.session-tracker {
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--button-bg);
+    max-width: 300px;
+}
+
+.tracker-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    color: var(--text-color);
+}
+
+.tracker-label {
+    font-weight: 500;
+}
+
+.tracker-value {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+    .session-tracker {
+        margin: 15px auto;
+        padding: 12px;
+    }
+}
+
+.session-history {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.session-history h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    padding: 4px 0;
+} 
