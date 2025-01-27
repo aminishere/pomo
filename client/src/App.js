@@ -8,18 +8,24 @@ function App() {
     const [workSessions, setWorkSessions] = useState(0);
     const [completedCycles, setCompletedCycles] = useState(0);
     const [sessionHistory, setSessionHistory] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Load initial session history
         loadSessionHistory();
     }, []);
 
     const loadSessionHistory = async () => {
         try {
+            setIsLoading(true);
+            setError(null);
             const sessions = await getSessions();
             setSessionHistory(sessions);
         } catch (error) {
             console.error('Error loading sessions:', error);
+            setError('Failed to load session history');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -31,12 +37,12 @@ function App() {
             const newCycles = completedCycles + 1;
             setCompletedCycles(newCycles);
             
-            // Save session data to backend
             try {
                 await saveSession(4, newCycles);
-                await loadSessionHistory(); // Reload history after saving
+                await loadSessionHistory();
             } catch (error) {
                 console.error('Error saving session:', error);
+                // Optionally show an error message to the user
             }
         }
     };
@@ -44,11 +50,18 @@ function App() {
     return (
         <div className="App">
             <Timer onSessionComplete={handleSessionComplete} />
-            <SessionTracker 
-                workSessions={workSessions}
-                completedCycles={completedCycles}
-                sessionHistory={sessionHistory}
-            />
+            {error ? (
+                <div className="error-message">
+                    {error}
+                </div>
+            ) : (
+                <SessionTracker 
+                    workSessions={workSessions}
+                    completedCycles={completedCycles}
+                    sessionHistory={sessionHistory}
+                    isLoading={isLoading}
+                />
+            )}
         </div>
     );
 }

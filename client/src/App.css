@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.error-message {
+    color: #e74c3c;
+    background-color: #fdeaea;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 20px auto;
+    max-width: 300px;
+    text-align: center;
+    border: 1px solid #fadbd8;
+}
+
+[data-theme="dark"] .error-message {
+    background-color: #2d1f1f;
+    border-color: #3d2828;
+}

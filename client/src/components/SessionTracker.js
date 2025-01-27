@@ -12,7 +12,7 @@ function SessionTracker({ workSessions, completedCycles, sessionHistory }) {
         <span className="tracker-label">Completed Cycles:</span>
         <span className="tracker-value">{completedCycles}</span>
       </div>
-      {sessionHistory && sessionHistory.length > 0 && (
+      {sessionHistory && sessionHistory.length > 0 ? (
         <div className="session-history">
           <h3>Recent Sessions</h3>
           <div className="history-list">
@@ -23,6 +23,10 @@ function SessionTracker({ workSessions, completedCycles, sessionHistory }) {
               </div>
             ))}
           </div>
+        </div>
+      ) : (
+        <div className="session-history">
+          <p className="no-history">No session history yet</p>
         </div>
       )}
     </div>
