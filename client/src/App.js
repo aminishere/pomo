@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Timer from './components/Timer';
 import SessionTracker from './components/SessionTracker';
+import Stats from './components/Stats';
 import { saveSession, getSessions } from './services/sessionService';
 import './App.css';
 
@@ -55,12 +56,18 @@ function App() {
                     {error}
                 </div>
             ) : (
-                <SessionTracker 
-                    workSessions={workSessions}
-                    completedCycles={completedCycles}
-                    sessionHistory={sessionHistory}
-                    isLoading={isLoading}
-                />
+                <>
+                    <SessionTracker 
+                        workSessions={workSessions}
+                        completedCycles={completedCycles}
+                        sessionHistory={sessionHistory}
+                        isLoading={isLoading}
+                    />
+                    <Stats 
+                        sessionHistory={sessionHistory}
+                        isLoading={isLoading}
+                    />
+                </>
             )}
         </div>
     );
