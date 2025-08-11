@@ -42,7 +42,17 @@ export async function register({ email, password }) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
   })
-  if (!res.ok) throw new Error('Registration failed')
+  
+  if (!res.ok) {
+    if (res.status === 409) {
+      throw new Error('Email already registered. Please login instead.')
+    } else if (res.status === 500) {
+      throw new Error('Server error. Please try again later.')
+    } else {
+      throw new Error(`Registration failed (${res.status})`)
+    }
+  }
+  
   return res.json()
 }
 
