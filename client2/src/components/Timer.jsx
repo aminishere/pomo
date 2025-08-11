@@ -63,15 +63,10 @@ export default function Timer({ onSessionComplete }) {
 
   return (
     <div className="w-full max-w-xl mx-auto bg-white dark:bg-zinc-900 rounded-lg shadow p-6 mb-6">
-      <h2 className="text-xl font-semibold mb-4">Pomodoro Timer</h2>
+
 
       <div className="flex items-center gap-3 mb-4">
         <button className={`px-3 py-1 rounded ${selectedMinutes===25?'bg-blue-600 text-white':'bg-zinc-100 dark:bg-zinc-800'}`} onClick={() => selectTime(25)}>Pomodoro</button>
-        <div className="flex gap-1">
-          {[0,1,2,3].map(i => (
-            <span key={i} className={`h-2 w-2 rounded-full ${i < pomodoroCount ? 'bg-green-500' : 'bg-zinc-300 dark:bg-zinc-700'}`} />
-          ))}
-        </div>
         <button className={`px-3 py-1 rounded ${selectedMinutes===10?'bg-blue-600 text-white':'bg-zinc-100 dark:bg-zinc-800'}`} onClick={() => selectTime(10)}>Short Break</button>
         <button className={`px-3 py-1 rounded ${selectedMinutes===20?'bg-blue-600 text-white':'bg-zinc-100 dark:bg-zinc-800'}`} onClick={() => selectTime(20)}>Long Break</button>
       </div>
@@ -83,6 +78,14 @@ export default function Timer({ onSessionComplete }) {
           {isRunning ? 'Pause' : 'Start'}
         </button>
         <button className="px-4 py-2 rounded bg-zinc-200 dark:bg-zinc-800" onClick={() => { setSecondsLeft(selectedMinutes*60); setIsRunning(false); setPomodoroCount(0) }}>Reset</button>
+      </div>
+
+      <div className="flex justify-center mt-4">
+        <div className="flex gap-1">
+          {[0,1,2,3].map(i => (
+            <span key={i} className={`h-2 w-2 rounded-full ${i < pomodoroCount ? 'bg-green-500' : 'bg-zinc-300 dark:bg-zinc-700'}`} />
+          ))}
+        </div>
       </div>
     </div>
   )

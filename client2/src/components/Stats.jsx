@@ -22,7 +22,6 @@ export default function Stats({ sessionHistory, isLoading }) {
     totalCycles,
     totalTime: `${totalHours}h ${remainingMinutes}m`,
     todayCycles,
-    averageCycles: Math.round((totalCycles / sessionHistory.length) * 10) / 10,
   }
 
   return (
@@ -40,10 +39,6 @@ export default function Stats({ sessionHistory, isLoading }) {
         <div>
           <div className="text-xs text-zinc-500">Total Cycles</div>
           <div className="text-xl font-semibold">{stats.totalCycles}</div>
-        </div>
-        <div>
-          <div className="text-xs text-zinc-500">Avg Cycles/Day</div>
-          <div className="text-xl font-semibold">{stats.averageCycles}</div>
         </div>
         <div>
           <div className="text-xs text-zinc-500">Total Sessions</div>

@@ -38,16 +38,20 @@ function App() {
 
   return (
     <div className="min-h-screen bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 p-6 flex flex-col">
-      <div className="max-w-4xl mx-auto flex-1">
+      <div className="max-w-4xl mx-auto flex-1 flex flex-col">
         <h1 className="text-3xl font-bold mb-6">Pomodoro Tracker</h1>
-        <Timer onSessionComplete={handleSessionComplete} />
-        <SessionTracker workSessions={workSessions} completedCycles={completedCycles} sessionHistory={sessionHistory} />
-        <Stats sessionHistory={sessionHistory} isLoading={isLoading} />
+        <div className="flex-1 flex items-center justify-center">
+          <Timer onSessionComplete={handleSessionComplete} />
+        </div>
       </div>
       <footer className="border-t border-zinc-200 dark:border-zinc-800 mt-6">
-        <div className="max-w-4xl mx-auto py-3 text-sm flex items-center justify-between">
-          <span className="text-zinc-600 dark:text-zinc-400">Work Sessions</span>
-          <span className="px-2 py-1 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium">{workSessions}/4</span>
+        <div className="w-full px-4 sm:px-6 md:px-8 py-4 flex flex-col md:flex-row gap-4 md:gap-0 md:divide-x md:divide-zinc-200 dark:md:divide-zinc-800">
+          <div className="md:flex-1 md:pr-4">
+            <Stats sessionHistory={sessionHistory} isLoading={isLoading} />
+          </div>
+          <div className="md:flex-1 md:pl-4">
+            <SessionTracker workSessions={workSessions} completedCycles={completedCycles} sessionHistory={sessionHistory} />
+          </div>
         </div>
       </footer>
     </div>
