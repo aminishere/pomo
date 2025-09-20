@@ -1,4 +1,4 @@
-const API_URL = 'https://pomo-3.onrender.com/api';
+const API_URL = 'https://pomo-3.onrender.com/api'; //deployed on render
 let authToken = null;
 
 export function setAuthToken(token) {
@@ -57,14 +57,17 @@ export async function register({ email, password }) {
 }
 
 export async function login({ email, password }) {
+  
   const res = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
   })
+  
   if (!res.ok) throw new Error('Login failed')
   const data = await res.json()
   setAuthToken(data.token)
   return data
+  
 }
 
